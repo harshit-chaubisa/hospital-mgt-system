@@ -13,7 +13,7 @@ module.exports = {
                 console.log(err);
                 return res.status(409).json({
                     success: 0,
-                    message: "Database connection error."
+                    message: "Patient already Exists."
                 });
             }
             return res.status(201).json({
