@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1667299474072" clover="3.2.0">
-  <project timestamp="1667299474072" name="All files">
-    <metrics statements="241" coveredstatements="180" conditionals="72" coveredconditionals="36" methods="62" coveredmethods="52" elements="375" coveredelements="268" complexity="0" loc="241" ncloc="241" packages="6" files="12" classes="12"/>
+<coverage generated="1667303553404" clover="3.2.0">
+  <project timestamp="1667303553404" name="All files">
+    <metrics statements="263" coveredstatements="189" conditionals="76" coveredconditionals="36" methods="66" coveredmethods="52" elements="405" coveredelements="277" complexity="0" loc="263" ncloc="263" packages="7" files="15" classes="15"/>
     <package name="hospital_mgt_sys">
-      <metrics statements="15" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <metrics statements="17" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="app.js" path="/Users/apple/code/hospital_mgt_sys/app.js">
-        <metrics statements="15" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <metrics statements="17" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="3" count="4" type="stmt"/>
@@ -13,14 +13,16 @@
         <line num="5" count="4" type="stmt"/>
         <line num="6" count="4" type="stmt"/>
         <line num="7" count="4" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
         <line num="11" count="4" type="stmt"/>
-        <line num="14" count="4" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="21" count="4" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="25" count="4" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
       </file>
     </package>
     <package name="hospital_mgt_sys.api.appointment">
@@ -67,9 +69,9 @@
       </file>
     </package>
     <package name="hospital_mgt_sys.api.doctor">
-      <metrics statements="86" coveredstatements="60" conditionals="28" coveredconditionals="13" methods="24" coveredmethods="20"/>
+      <metrics statements="86" coveredstatements="57" conditionals="28" coveredconditionals="13" methods="24" coveredmethods="20"/>
       <file name="doctor.controller.js" path="/Users/apple/code/hospital_mgt_sys/api/doctor/doctor.controller.js">
-        <metrics statements="50" coveredstatements="33" conditionals="16" coveredconditionals="8" methods="12" coveredmethods="10"/>
+        <metrics statements="50" coveredstatements="30" conditionals="16" coveredconditionals="8" methods="12" coveredmethods="10"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="3" count="4" type="stmt"/>
@@ -117,9 +119,9 @@
         <line num="86" count="2" type="stmt"/>
         <line num="91" count="1" type="stmt"/>
         <line num="92" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="93" count="1" type="stmt"/>
-        <line num="94" count="1" type="stmt"/>
-        <line num="95" count="1" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
       </file>
       <file name="doctor.router.js" path="/Users/apple/code/hospital_mgt_sys/api/doctor/doctor.router.js">
         <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -262,6 +264,38 @@
         <line num="89" count="3" type="stmt"/>
       </file>
     </package>
+    <package name="hospital_mgt_sys.api.prescription">
+      <metrics statements="20" coveredstatements="10" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <file name="prescription.controller.js" path="/Users/apple/code/hospital_mgt_sys/api/prescription/prescription.controller.js">
+        <metrics statements="9" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+      </file>
+      <file name="prescription.router.js" path="/Users/apple/code/hospital_mgt_sys/api/prescription/prescription.router.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+      </file>
+      <file name="prescription.service.js" path="/Users/apple/code/hospital_mgt_sys/api/prescription/prescription.service.js">
+        <metrics statements="6" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="15" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+      </file>
+    </package>
     <package name="hospital_mgt_sys.auth">
       <metrics statements="19" coveredstatements="17" conditionals="8" coveredconditionals="6" methods="4" coveredmethods="4"/>
       <file name="tokenValidation.js" path="/Users/apple/code/hospital_mgt_sys/auth/tokenValidation.js">
@@ -277,14 +311,14 @@
         <line num="11" count="0" type="stmt"/>
         <line num="17" count="6" type="stmt"/>
         <line num="22" count="5" type="stmt"/>
-        <line num="29" count="7" type="stmt"/>
-        <line num="30" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="29" count="8" type="stmt"/>
+        <line num="30" count="8" type="cond" truecount="2" falsecount="0"/>
         <line num="31" count="4" type="stmt"/>
         <line num="32" count="4" type="stmt"/>
         <line num="33" count="4" type="cond" truecount="1" falsecount="1"/>
         <line num="34" count="0" type="stmt"/>
         <line num="40" count="4" type="stmt"/>
-        <line num="45" count="3" type="stmt"/>
+        <line num="45" count="4" type="stmt"/>
       </file>
     </package>
     <package name="hospital_mgt_sys.config">
