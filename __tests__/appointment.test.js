@@ -6,7 +6,7 @@ const patientToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOnsiaWQiO
 
 //request for the appointment registration(POST request for appointment)
 describe('Appointment Registration.', () => {
-    it('Returns 201 created when signup request is successful.', () =>{
+    it('Returns 201 created when request is successful.', () =>{
         return request(app)
         .post('/api/appointment')
         .auth(patientToken, { type: 'bearer' })
@@ -22,13 +22,13 @@ describe('Appointment Registration.', () => {
     it('Returns 401 Unauthorized Access where the appointment was not found.', () => {
         return request(app)
         .post('/api/appointment')
-        .expect(401)
         .send({
             doctorId : 1,
             patientId : 1,
             aptDate : "2015-12-20 10:01:00.9",
             description : "Suffering from malaria."
         })
+        .expect(401)
     });
 });
 
