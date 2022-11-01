@@ -2,10 +2,11 @@ const express =require("express");
 const app  = express();
 const ck = require("ckey");
 const doctorRouter = require("./api/doctor/doctor.router");
-
+const patientRouter = require("./api/patient/patient.router");
 app.use(express.json());
 
 app.use("/api/doctor",doctorRouter);
+app.use("/api/patient",patientRouter);
 
 
 app.get("/api",(req,res)=>{
