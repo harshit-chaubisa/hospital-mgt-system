@@ -2,59 +2,54 @@ const { expect } = require("chai");
 const request = require("supertest");
 const app = require("../app");
 
-const doctorToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOnsiaWQiOjEsImZOYW1lIjoiSGFyc2hpdCIsImxOYW1lIjoiQ2hhdWJpc2EiLCJhZ2UiOjIyLCJnZW5kZXIiOiJtYWxlIiwicGhObyI6Ijc3MzcxMTA3NDAiLCJlTWFpbCI6ImhhcnNoaXRAZ21haWwuY29tIiwic2hpZnQiOiJtb3JuaW5nIiwid2FyZE5vIjo0fSwiaWF0IjoxNjY3MjgzODAzfQ.Lqq1gxS0XQXRUrnruqX7_8ZCU9Si6ZTKZF0foWuSM78"
-//request for the doctor registration(POST request for doctor)
-describe('Doctor Registration.', () => {
+const patientToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOnsiaWQiOjEsImZOYW1lIjoiQXJ2aW5kIiwibE5hbWUiOiJTaGFybWEiLCJhZ2UiOjI0LCJnZW5kZXIiOiJtYWxlIiwicGhObyI6IjgwMDAyODg0NjgifSwiaWF0IjoxNjY3MjkyMTM3fQ.duXOKtVJw7yeCZsWcTKOpSvcxe0NTnua8ZQHfQ9rbng"
+
+//request for the patient registration(POST request for patient)
+describe('Patient Registration.', () => {
     it('Returns 201 created when signup request is successful.', () =>{
         return request(app)
-        .post('/api/doctor')
+        .post('/api/patient')
         .send({
-            fName : "Harshit",
-            lName : "Chaubisa",
-            age : 22,
+            fName : "Arvind",
+            lName : "Sharma",
+            age : 24,
             gender : "male",
-            phNo : "7737110740",
-            eMail : "harshit@gmail.com",
-            psswd : "harshit",
-            shift : "morning",
-            wardNo : 4
+            phNo : "8000288468",
+            psswd : "arvind"
         })
         .expect(201);
     });
 
     it('Returns 409 conflict as user already exists', () => {
         return request(app)
-        .post('/api/doctor')
+        .post('/api/patient')
         .send({
-            fName : "Harshit",
-            lName : "Chaubisa",
-            age : 22,
+            fName : "Arvind",
+            lName : "Sharma",
+            age : 24,
             gender : "male",
-            phNo : "7737110740",
-            eMail : "harshit@gmail.com",
-            psswd : "harshit",
-            shift : "morning",
-            wardNo : 4
+            phNo : "8000288468",
+            psswd : "arvind"
         })
         .expect(409)
         .then((response) => {
             expect({
                 success : 0,
-                message : "Doctor already exists."
+                message : "Patient already exists."
             });
         });
     });
 });
 
 
-// test cases for doctor login (post request for login.)
-describe("Doctor Login", () => {
+// test cases for patient login (post request for login.)
+describe("patient Login", () => {
     it('Returns 200 on successful login.', () => {
         return request(app)
-        .post('/api/doctor/login')
+        .post('/api/patient/login')
         .send({
-            phNo : "7737110740",
-            psswd : "harshit"
+            phNo : "8000288468",
+            psswd : "arvind"
         })
         .expect(200)
         .then((response) => {
@@ -68,9 +63,9 @@ describe("Doctor Login", () => {
 
     it('Returns 400 for entering incomplete login details. ', () => {
         return request(app)
-        .post('/api/doctor/login')
+        .post('/api/patient/login')
         .send({
-            psswd : "harshit"
+            psswd : "arvind"
         })
         .expect(400)
         .then((response) => {
@@ -83,7 +78,7 @@ describe("Doctor Login", () => {
 
     it('Returns 400 for entering phone number which is not present. ', () => {
         return request(app)
-        .post('/api/doctor/login')
+        .post('/api/patient/login')
         .send({
             phNo : "8883332221",
             psswd : "harshit"
@@ -98,28 +93,25 @@ describe("Doctor Login", () => {
     });
 });
 
-// test cases for getting doctors(get request for accessing all doctors and also get doctor by id.)
-describe("Get doctors.", () => {
-    it('Returns 200 Ok for getting all the doctors.', () => {
+// test cases for getting patients(get request for accessing all patients and also get patient by id.)
+describe("Get patients.", () => {
+    it('Returns 200 Ok for getting all the patients.', () => {
         return request(app)
-        .get('/api/doctor')
-        .auth(doctorToken, { type: 'bearer' })
+        .get('/api/patient')
+        .auth(patientToken, { type: 'bearer' })
         .expect(200)
         .then((response) => {
             expect({
                 "success": 1,
                 "data": [
                     {
-                        id: 1,
-                        fName: "Harshit",
-                        lName: "Chaubisa",
-                        age: 22,
-                        gender: "male",
-                        phNo: "7737110740",
-                        eMail: "harshit@gmail.com",
-                        psswd: "$2b$10$PdGiA7OEj5B.iauVRVEMV.wI7.oL1DpWKQuTjXuMLYUqgi3VufcTG",
-                        shift: "morning",
-                        wardNo: 4
+                        "id": 1,
+                        "fName": "Arvind",
+                        "lName": "Sharma",
+                        "age": 24,
+                        "gender": "male",
+                        "phNo": "8000288468",
+                        "psswd": "$2b$10$xBc0uAZTOPxWkkI0ZMIngeocNTTehL1/QE0gNa1y4pAWKvFNNBNhy"
                     }
                 ]
             });
@@ -128,24 +120,21 @@ describe("Get doctors.", () => {
 
     it('Returns 200 Ok for getting a user with the help of its id.', () => {
         return request(app)
-        .get('/api/doctor/1')
-        .auth(doctorToken, { type: 'bearer' })
+        .get('/api/patient/1')
+        .auth(patientToken, { type: 'bearer' })
         .expect(200)
         .then((response) => {
             expect({
                 success : 1,
                 data : [
                     {
-                        id: 1,
-                        fName: "Harshit",
-                        lName: "Chaubisa",
-                        age: 22,
-                        gender: "male",
-                        phNo: "7737110740",
-                        eMail: "harshit@gmail.com",
-                        psswd: "$2b$10$PdGiA7OEj5B.iauVRVEMV.wI7.oL1DpWKQuTjXuMLYUqgi3VufcTG",
-                        shift: "morning",
-                        wardNo: 4
+                        "id": 1,
+                        "fName": "Arvind",
+                        "lName": "Sharma",
+                        "age": 24,
+                        "gender": "male",
+                        "phNo": "8000288468",
+                        "psswd": "$2b$10$xBc0uAZTOPxWkkI0ZMIngeocNTTehL1/QE0gNa1y4pAWKvFNNBNhy"
                     }
                 ]
             });
@@ -154,33 +143,30 @@ describe("Get doctors.", () => {
 
     it('Returns  Not Found where the user doesnt exists.', () => {
         return request(app)
-        .get('/api/doctor/47')
-        .auth(doctorToken, { type: 'bearer' })
+        .get('/api/patient/47')
+        .auth(patientToken, { type: 'bearer' })
         .expect(200)
         .then((response) => {
             expect({
                 success : 0,
-                message : "The user doesn't exists."
+                message : "The patient doesn't exists."
             });
         });
     });
 });
 
-// Test cases for patch request of doctor entity.
-describe('update doctor.', () => {
+// Test cases for patch request of patient entity.
+describe('update patient.', () => {
     it('Returns 401 unauthorized access when the update is successful.', () => {
         return request(app)
-        .patch('/api/doctor/1')
+        .patch('/api/patient/1')
         .send({
-            fName: "Harshit",
-            lName: "Paliwal",
-            age: 22,
-            gender: "male",
-            phNo: "7737110740",
-            eMail: "harshit33@gmail.com",
-            psswd: "paliwal",
-            shift: "morning",
-            wardNo: 4
+            fName : "Arvind",
+            lName : "Sharma",
+            age : 24,
+            gender : "male",
+            phNo : "8000288468",
+            psswd : "arvind"
         })
         .expect(401)
         .then((response) => {
@@ -191,13 +177,13 @@ describe('update doctor.', () => {
         });
     });
 
-    it('Returns 200 ok when the doctor is updated successfully.', () => {
+    it('Returns 200 ok when the patient is updated successfully.', () => {
         return request(app)
-        .patch('/api/doctor/1')
+        .patch('/api/patient/1')
         jest.setTimeout(30000)
-        .auth(doctorToken, { type: 'bearer' })
+        .auth(patientToken, { type: 'bearer' })
         .send({
-            fName : "Arvind",
+            fName : "Harshit",
             psswd : "chaubisa"
         })
         .expect(200)
@@ -210,11 +196,11 @@ describe('update doctor.', () => {
     });
 });
 
-// Test cases for delete Request of the doctor.
-describe('Delete doctor' ,() =>{
-    it('Returns 401 Unauthorized Access where the doctor was not found.', () => {
+// Test cases for delete Request of the patient.
+describe('Delete patient' ,() =>{
+    it('Returns 401 Unauthorized Access where the patient was not found.', () => {
         return request(app)
-        .delete('/api/doctor/1')
+        .delete('/api/patient/1')
         .expect(401)
         .then((response) => {
             expect({
@@ -224,15 +210,15 @@ describe('Delete doctor' ,() =>{
         });
     });
 
-    it('Returns 200 Ok where the doctor was deleted successfully.', () => {
+    it('Returns 200 Ok where the patient was deleted successfully.', () => {
         return request(app)
-        .delete('/api/doctor/2')
-        .auth(doctorToken, { type: 'bearer' })
+        .delete('/api/patient/1')
+        .auth(patientToken, { type: 'bearer' })
         .expect(200)
         .then((response) => {
             expect({
                 success : 1,
-                message : "Doctor deleted Successfully."
+                message : "patient deleted Successfully."
             });
         });
     });

@@ -2,11 +2,11 @@ const  { verify } = require("jsonwebtoken");
 const ck = require("ckey");
 
 module.exports ={
-    checkUserToken: (req, res, next) => {
+    checkPatientToken: (req, res, next) => {
         let token = req.get("authorization");
         if(token) {
             token = token.slice(7);
-            verify(token, ck.USER_SECRET, (err,decoded) => {
+            verify(token, ck.PATIENT_SECRET, (err,decoded) => {
                 if(err){
                     res.status(400).json({
                         success : 0,
