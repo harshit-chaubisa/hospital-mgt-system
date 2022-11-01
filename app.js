@@ -3,10 +3,12 @@ const app  = express();
 const ck = require("ckey");
 const doctorRouter = require("./api/doctor/doctor.router");
 const patientRouter = require("./api/patient/patient.router");
+const appointmentRouter = require("./api/appointment/appointment.router");
 app.use(express.json());
 
 app.use("/api/doctor",doctorRouter);
 app.use("/api/patient",patientRouter);
+app.use("/api/appointment",appointmentRouter);
 
 
 app.get("/api",(req,res)=>{

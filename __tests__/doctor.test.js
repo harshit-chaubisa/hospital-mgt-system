@@ -3,6 +3,7 @@ const request = require("supertest");
 const app = require("../app");
 
 const doctorToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOnsiaWQiOjEsImZOYW1lIjoiSGFyc2hpdCIsImxOYW1lIjoiQ2hhdWJpc2EiLCJhZ2UiOjIyLCJnZW5kZXIiOiJtYWxlIiwicGhObyI6Ijc3MzcxMTA3NDAiLCJlTWFpbCI6ImhhcnNoaXRAZ21haWwuY29tIiwic2hpZnQiOiJtb3JuaW5nIiwid2FyZE5vIjo0fSwiaWF0IjoxNjY3MjgzODAzfQ.Lqq1gxS0XQXRUrnruqX7_8ZCU9Si6ZTKZF0foWuSM78"
+
 //request for the doctor registration(POST request for doctor)
 describe('Doctor Registration.', () => {
     it('Returns 201 created when signup request is successful.', () =>{
@@ -17,7 +18,8 @@ describe('Doctor Registration.', () => {
             eMail : "harshit@gmail.com",
             psswd : "harshit",
             shift : "morning",
-            wardNo : 4
+            wardNo : 4,
+            specialization : "Malaria"
         })
         .expect(201);
     });
@@ -34,7 +36,8 @@ describe('Doctor Registration.', () => {
             eMail : "harshit@gmail.com",
             psswd : "harshit",
             shift : "morning",
-            wardNo : 4
+            wardNo : 4,
+            specialization : "Malaria"
         })
         .expect(409)
         .then((response) => {
@@ -119,7 +122,8 @@ describe("Get doctors.", () => {
                         eMail: "harshit@gmail.com",
                         psswd: "$2b$10$PdGiA7OEj5B.iauVRVEMV.wI7.oL1DpWKQuTjXuMLYUqgi3VufcTG",
                         shift: "morning",
-                        wardNo: 4
+                        wardNo: 4,
+                        specialization : "Malaria"
                     }
                 ]
             });
@@ -145,7 +149,8 @@ describe("Get doctors.", () => {
                         eMail: "harshit@gmail.com",
                         psswd: "$2b$10$PdGiA7OEj5B.iauVRVEMV.wI7.oL1DpWKQuTjXuMLYUqgi3VufcTG",
                         shift: "morning",
-                        wardNo: 4
+                        wardNo: 4,
+                        specialization : "Malaria"
                     }
                 ]
             });
@@ -180,7 +185,8 @@ describe('update doctor.', () => {
             eMail: "harshit33@gmail.com",
             psswd: "paliwal",
             shift: "morning",
-            wardNo: 4
+            wardNo: 4,
+            specialization : "Malaria"
         })
         .expect(401)
         .then((response) => {
@@ -226,7 +232,7 @@ describe('Delete doctor' ,() =>{
 
     it('Returns 200 Ok where the doctor was deleted successfully.', () => {
         return request(app)
-        .delete('/api/doctor/2')
+        .delete('/api/doctor/1')
         .auth(doctorToken, { type: 'bearer' })
         .expect(200)
         .then((response) => {

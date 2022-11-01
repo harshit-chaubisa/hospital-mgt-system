@@ -3,7 +3,7 @@ const pool = require("../../config/database");
 module.exports = {
     addDoctor: (data,callBack) =>{
         pool.query(
-            'INSERT INTO `doctor`(fName,lName,age,gender,phNo,eMail,psswd,shift,wardNo) VALUES(?,?,?,?,?,?,?,?,?)',
+            'INSERT INTO `doctor`(fName,lName,age,gender,phNo,eMail,psswd,shift,wardNo,specialization) VALUES(?,?,?,?,?,?,?,?,?,?)',
             [
                 data.fName,
                 data.lName,
@@ -13,7 +13,8 @@ module.exports = {
                 data.eMail,
                 data.psswd,
                 data.shift,
-                data.wardNo
+                data.wardNo,
+                data.specialization
             ],
             (error, results, fields) =>{
                 if(error){
@@ -50,7 +51,7 @@ module.exports = {
     },
     updateDoctor : (data,id,callBack) =>{
         pool.query(
-            'UPDATE `doctor` set fName = ?, lName = ?, age = ?, gender = ?, phNo = ?, eMail = ?, psswd = ?, shift = ?, wardNo = ? where id = ?',
+            'UPDATE `doctor` set fName = ?, lName = ?, age = ?, gender = ?, phNo = ?, eMail = ?, psswd = ?, shift = ?, wardNo = ?, specialization = ? where id = ?',
             [
                 data.fName,
                 data.lName,
@@ -61,6 +62,7 @@ module.exports = {
                 data.psswd,
                 data.shift,
                 data.wardNo,
+                data.specialization,
                 id
                 
             ],
