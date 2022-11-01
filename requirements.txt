@@ -4,3 +4,7 @@ dotenv
 ckey
 mysql
 mysql2
+--save-dev bcrypt
+--save-dev jsonwebtoken
+--save-dev supertest
+--save-dev jest
